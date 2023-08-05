@@ -2,13 +2,12 @@ import "./App.css";
 import { useState } from "react";
 import toMorse from "./utils/toMorse";
 import fromMorse from "./utils/fromMorse";
-import { Button } from "./components/Button/Button";
 import { Card } from "./components/Card/Card";
 
 function App() {
   const [text, setText] = useState("");
   const [morse, setMorse] = useState("");
-  const [show, setShow] = useState(null);
+  const [show, setShow] = useState("toMorse");
 
   const toMorseChange = (e) => {
     const aux = e.target.value.toUpperCase();
@@ -24,38 +23,53 @@ function App() {
     setText(fromMorse(aux));
   };
 
-  const copy = (textOrMorse = "text") => {
-    navigator.clipboard.writeText(textOrMorse === "text" ? text : morse);
+  const copy = (copy) => {
+    navigator.clipboard.writeText(copy);
+  };
+
+  const toggleShow = () => {
+    setShow(show === "toMorse" ? "fromMorse" : "toMorse");
   };
 
   return (
-    <div className="App">
-      <div>
-        <Button onClick={() => setShow("toMorse")}>Combertir a morse</Button>
-        <Button onClick={() => setShow("fromMorse")}>Combertir de morse</Button>
+    <div className="bg-amber-200 flex-col justify-center items-center h-screen">
+      <button onClick={toggleShow}>Cambiar</button>
+
+      <div className="flex justify-center items-center">
+        <Card
+          placeholder={
+            show === "toMorse"
+              ? "Escribe tu texto aquí"
+              : "Escribe tu morse aquí"
+          }
+          onChange={show === "toMorse" ? toMorseChange : fromMorseChange}
+          value={show === "toMorse" ? text : morse}
+          text={show !== "toMorse" ? morse : text}
+          onClick={copy}
+          btnText={show === "toMorse" ? "Copiar morse" : "Copiar texto"}
+          title={show === "toMorse" ? "Texto a morse" : "Morse a texto"}
+          textArea={true}
+          id="card1"
+          show={show}
+        />
+
+        <Card
+          placeholder={
+            show !== "toMorse"
+              ? "Escribe tu texto aquí"
+              : "Escribe tu morse aquí"
+          }
+          onChange={show !== "toMorse" ? toMorseChange : fromMorseChange}
+          value={show !== "toMorse" ? text : morse}
+          text={show === "toMorse" ? morse : text}
+          onClick={copy}
+          btnText={show !== "toMorse" ? "Copiar morse" : "Copiar texto"}
+          title={show !== "toMorse" ? "Texto a morse" : "Morse a texto"}
+          textArea={false}
+          id="card2"
+          show={show}
+        />
       </div>
-
-      {show === "toMorse" ? (
-        <Card
-          placeholder="Escribe tu texto aquí"
-          onChange={toMorseChange}
-          value={text}
-          text={morse}
-          onClick={() => copy("morse")}
-          btnText="Copiar morse"
-        />
-      ) : null}
-
-      {show === "fromMorse" ? (
-        <Card
-          placeholder="Escribe tu morse aquí"
-          onChange={fromMorseChange}
-          value={morse}
-          text={text}
-          onClick={() => copy("text")}
-          btnText="Copiar texto"
-        />
-      ) : null}
     </div>
   );
 }

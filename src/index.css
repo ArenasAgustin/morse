@@ -1,29 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
+    .border-image {
+      border-left: 30px solid white; 
+      border-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI0MS44NnB4IiBoZWlnaHQ9IjUyLjMyNnB4IiB2aWV3Qm94PSIwIDAgNDEuODYgNTIuMzI2IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA0MS44NiA1Mi4zMjYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDB2MjUuMTYzaDcuMDk3YzAuNTAxLTQuOTg5LDQuNzEyLTguODg0LDkuODMzLTguODg0YzUuNDU4LDAsOS44ODQsNC40MjUsOS44ODQsOS44ODRzLTQuNDI1LDkuODg0LTkuODg0LDkuODg0Yy01LjEyMSwwLTkuMzMyLTMuODk1LTkuODMzLTguODg0SDB2MjUuMTYzaDQxLjg2VjBIMHoiLz48L3N2Zz4=) 5% 100% repeat;
+      border-image-width: 0px 0px 0px 30px;
+    }
+
+    .pb-line-height {
+      padding-bottom: 40px;
+    }
+
+    .pl-80px {
+      padding-left: 80px;
+    }
+
+    .font-shadows {
+      font-family: 'Shadows Into Light', cursive;
+    }
+
+    .font-borel {
+      font-family: 'Borel', cursive;
+    }
+
+    .bg-sheet {
+      background: #fff linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 0) 0 20px/100% 40px;
+    }
+
+    .line-height {
+      line-height: 40px;
+    }
+
+    .form__field:empty:before, .form__field:empty:focus:before {
+      content: attr(data-placeholder);
+    }
+
+    .sheet-after:after {
+      position: absolute; 
+      top: 0;
+      left: 50px;
+      content: '';
+      height: 100%;
+      width: 1px;
+      border-left: double #E08183;
+    }
+
     .hover\:glow:hover {
-        filter: drop-shadow(0px 0px 7px rgba(59, 130, 246, 0.5));
-      }
-      
-      .group:hover .group-hover\:\-translate-y-1 {
-        transform: translateY(-0.25rem);
-      }
-      
-      .group:focus .group-focus\:pt-20 {
-        padding-top: 5rem;
-      }
-      
-      .animate-down {
-        transform: translateY(250%) !important
-      }
-      
-      .animate-up {
-        transform: translateY(-250%) !important
-      }
-      
-      .hidden {
-        display: none;
-      }
+      filter: drop-shadow(0px 0px 7px rgba(59, 130, 246, 0.5));
+    }
+    
+    .group:hover .group-hover\:\-translate-y-1 {
+      transform: translateY(-0.25rem);
+    }
+    
+    .group:focus .group-focus\:pt-20 {
+      padding-top: 5rem;
+    }
+    
+    .animate-down {
+      transform: translateY(250%) !important
+    }
+    
+    .animate-up {
+      transform: translateY(-250%) !important
+    }
+    
+    .hidden {
+      display: none;
+    }
+
+    .bg-shadow {
+      --g:radial-gradient(55% 20px, #0009, #0000); 
+
+    background: linear-gradient(#fff 10px, #0000 40px calc(100% - 40px),#fff calc(100% - 10px)) local, 
+        var(--g) top   /100% 200%,    
+        var(--g) bottom/100% 200%;
+    }
   }
