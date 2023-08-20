@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 @import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 @tailwind base;
 @tailwind components;
@@ -26,6 +27,10 @@
 
     .font-borel {
       font-family: 'Borel', cursive;
+    }
+
+    .font-ubuntu {
+      font-family: 'Ubuntu', sans-serif;
     }
 
     .bg-sheet {
@@ -80,5 +85,21 @@
     background: linear-gradient(#fff 10px, #0000 40px calc(100% - 40px),#fff calc(100% - 10px)) local, 
         var(--g) top   /100% 200%,    
         var(--g) bottom/100% 200%;
+    }
+
+    .btn-hover {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-hover:after {
+      left: -20%;
+    }
+
+    .btn-hover:hover span {
+      margin-left: 20px;
+    }
+
+    .btn-hover:hover:after {
+      left: 20px;
     }
   }

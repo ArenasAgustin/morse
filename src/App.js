@@ -3,6 +3,7 @@ import { useState } from "react";
 import toMorse from "./utils/toMorse";
 import fromMorse from "./utils/fromMorse";
 import { Card } from "./components/Card/Card";
+import { Button } from "./components/Button/Button";
 
 function App() {
   const [text, setText] = useState("");
@@ -32,10 +33,10 @@ function App() {
   };
 
   return (
-    <div className="bg-amber-200 flex-col justify-center items-center h-screen">
-      <button onClick={toggleShow}>Cambiar</button>
+    <div className="bg-black-500 flex flex-col justify-center items-center min-h-screen">
+      <Button onClick={toggleShow}>Cambiar</Button>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center w-full flex-wrap">
         <Card
           placeholder={
             show === "toMorse"
