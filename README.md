@@ -32,6 +32,10 @@ El Proyecto Morse es una aplicación JavaScript que permite a los usuarios tradu
 ## Uso
 
 1. Ejecuta el comando: `yarn start`.
+2. Abre tu navegador y navega a `http://localhost:3000`.
+3. Introduce el texto o código Morse que deseas traducir.
+4. Haz clic en el botón "Traducir" para ver el resultado.
+5. ¡Disfruta de tu traducción!
 
 ## Contribución
 
