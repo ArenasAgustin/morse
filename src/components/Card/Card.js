@@ -63,7 +63,7 @@ export const Card = ({
         blocked = false;
       }, 500);
     }
-  }, []);
+  }, [id]);
 
   return (
     <div className="max-w-96 w-full lg:w-2/5 sm:w-full h-96 border-image rounded-l-none rounded-r-2xl m-4 line-height">
