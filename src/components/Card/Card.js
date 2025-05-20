@@ -66,7 +66,7 @@ export const Card = ({
   }, [id]);
 
   return (
-    <div className="max-w-96 w-full lg:w-2/5 sm:w-full h-96 border-image rounded-l-none rounded-r-2xl m-4 line-height">
+    <div className="max-w-7xl w-full lg:w-2/5 sm:w-full h-96 border-image rounded-l-none rounded-r-2xl m-4 line-height">
       <div className="relative m-0 h-full pt-11 pr-7 pb-line-height pl-80px text-2xl rounded-l-none rounded-r-2xl font-shadows bg-sheet sheet-after">
         <p className="p-0 pb-10 line-height">{title}</p>
 
