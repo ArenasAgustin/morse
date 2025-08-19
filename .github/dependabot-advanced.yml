@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Frontend React/Next.js
+  - package-ecosystem: "npm"
+    directory: "/apps/frontend"
+    schedule:
+      interval: "weekly"
+    groups:
+      react-ecosystem:
+        patterns:
+          - "react*"
+          - "@types/react*"
+          - "next*"
+      testing:
+        patterns:
+          - "*jest*"
+          - "*testing*"
+          - "vitest*"
+      linting:
+        patterns:
+          - "eslint*"
+          - "prettier*"
+          - "@typescript-eslint/*"
+    
+  # Backend Node.js/Express
+  - package-ecosystem: "npm"
+    directory: "/apps/backend"
+    schedule:
+      interval: "weekly"
+    groups:
+      express-ecosystem:
+        patterns:
+          - "express*"
+          - "@types/express*"
+      database:
+        patterns:
+          - "*sequelize*"
+          - "*mongoose*"
+          - "*prisma*"
+    
+  # Shared packages
+  - package-ecosystem: "npm"
+    directory: "/packages/shared"
+    schedule:
+      interval: "weekly"
