@@ -80,7 +80,7 @@
     }
 
     .bg-shadow {
-      --g:radial-gradient(55% 20px, #0009, #0000); 
+      --g:radial-gradient(55% 20px at center, #0009, #0000); 
 
     background: linear-gradient(#fff 10px, #0000 40px calc(100% - 40px),#fff calc(100% - 10px)) local, 
         var(--g) top   /100% 200%,    
