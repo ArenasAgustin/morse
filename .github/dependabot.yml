@@ -1,0 +1,59 @@
+version: 2
+updates:
+  # Configuración para npm (JavaScript/TypeScript)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "ArenasAgustin"
+    assignees:
+      - "ArenasAgustin"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automated"
+    # Agrupar actualizaciones menores y parches
+    groups:
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Configuraciones específicas para diferentes tipos de dependencias
+    ignore:
+      # Ignorar actualizaciones mayores de ciertas dependencias críticas
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "vue"
+        update-types: ["version-update:semver-major"]
+    
+  # Si también tienes proyectos con yarn
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    
+  # Para proyectos con pnpm (si los usas)
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    
+  # GitHub Actions (para mantener actualizadas las actions)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "github-actions"
+      - "dependencies"
