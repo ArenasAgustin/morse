@@ -1,4 +1,4 @@
-import { TextArea } from "../TextArea/TextArea";
+import { TextArea } from "../TextArea/TextArea.jsx";
 import { useEffect } from "react";
 
 export const Card = ({

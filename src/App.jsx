@@ -2,8 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import toMorse from "./utils/toMorse";
 import fromMorse from "./utils/fromMorse";
-import { Card } from "./components/Card/Card";
-import { Button } from "./components/Button/Button";
+import { Card } from "./components/Card/Card.jsx";
+import { Button } from "./components/Button/Button.jsx";
 
 function App() {
   const [text, setText] = useState("");
