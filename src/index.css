@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light");
 @import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
-@import "tailwindcss";
+/* source(none) apaga la deteccion automatica de fuentes. Sin esto Tailwind
+   escanea todo el proyecto salvo lo ignorado por git, incluidos .github,
+   package.json y pnpm-lock.yaml, y compila cualquier palabra que coincida
+   con el nombre de un utility. Las clases solo viven en src. */
+@import "tailwindcss" source(none);
+@source "./**/*.{js,jsx}";
 
 @theme {
   /* Colores personalizados */
