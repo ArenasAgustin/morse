@@ -33,7 +33,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # No hay test runner en el proyecto todavía. El build es la única
-      # verificación disponible. Cuando haya tests, van acá.
+      # Los tests van antes del build: si la lógica está rota, no tiene
+      # sentido gastar tiempo empaquetando.
+      - name: Test
+        run: pnpm test
+
       - name: Build
         run: pnpm run build
