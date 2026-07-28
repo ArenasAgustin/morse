@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [master]
+
+# Solo lectura: este workflow verifica, no escribe nada en el repositorio.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # sass >= 1.101 requiere Node >= 20.19
+          node-version: "22"
+          cache: "pnpm"
+
+      # --frozen-lockfile falla si package.json y pnpm-lock.yaml divergen,
+      # en vez de corregir el lockfile en silencio.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # No hay test runner en el proyecto todavía. El build es la única
+      # verificación disponible. Cuando haya tests, van acá.
+      - name: Build
+        run: pnpm run build
