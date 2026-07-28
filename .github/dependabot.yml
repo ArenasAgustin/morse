@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # Configuración para npm (JavaScript/TypeScript)
+  # Configuración para npm (JavaScript/TypeScript), gestionado con pnpm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -20,35 +20,30 @@ updates:
     labels:
       - "dependencies"
       - "automated"
-    # Agrupar actualizaciones menores y parches
     groups:
+      # react y react-dom tienen que moverse siempre juntos. Actualizar uno
+      # sin el otro deja un peer mismatch que solo falla en runtime.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@testing-library/react"
+      # Agrupar actualizaciones menores y parches
       minor-and-patch:
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
-    # Configuraciones específicas para diferentes tipos de dependencias
     ignore:
-      # Ignorar actualizaciones mayores de ciertas dependencias críticas
+      # Las majors de React son una migración manual y deliberada.
+      # react-dom tiene que estar ignorado junto con react: si no,
+      # Dependabot abre una PR de react-dom sola y las versiones se separan.
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
-      - dependency-name: "vue"
+      - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
-    
-  # Si también tienes proyectos con yarn
-  - package-ecosystem: "npm"
-    directory: "/frontend"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
-    
-  # Para proyectos con pnpm (si los usas)
-  - package-ecosystem: "npm"
-    directory: "/backend"
-    schedule:
-      interval: "weekly"
-    
+
   # GitHub Actions (para mantener actualizadas las actions)
   - package-ecosystem: "github-actions"
     directory: "/"
