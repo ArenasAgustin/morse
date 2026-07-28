@@ -11,4 +11,9 @@ export default defineConfig({
     },
   },
   base: "/",
+  // Los utils son JS puro, no tocan el DOM. Con el entorno node alcanza.
+  test: {
+    environment: "node",
+    include: ["src/**/*.test.js"],
+  },
 });
