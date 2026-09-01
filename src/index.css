@@ -41,7 +41,7 @@
   --color-gray-900: #19221d;
 
   /* Fuentes personalizadas */
-  --font-family-sans: "Inter var", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter var", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {
