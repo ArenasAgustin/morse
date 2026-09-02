@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import toMorse from "./utils/toMorse";
 import fromMorse from "./utils/fromMorse";

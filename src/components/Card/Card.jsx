@@ -37,8 +37,8 @@ export const Card = ({
         clearInterval(load);
 
         setTimeout(() => {
-          progress.classList.remove("bg-opacity-20");
-          progress.classList.add("bg-opacity-0");
+          progress.classList.remove("bg-blue-500/20");
+          progress.classList.add("bg-blue-500/0");
           check.classList.remove("w-0");
           check.classList.add("w-5");
 
@@ -58,8 +58,8 @@ export const Card = ({
       copy.classList.remove("animate-down");
 
       setTimeout(() => {
-        progress.classList.remove("bg-opacity-0");
-        progress.classList.add("bg-opacity-20");
+        progress.classList.remove("bg-blue-500/0");
+        progress.classList.add("bg-blue-500/20");
         blocked = false;
       }, 500);
     }
@@ -121,7 +121,7 @@ export const Card = ({
 
             <div
               id={`progress-${id}`}
-              className="absolute w-full h-0 bg-blue-500 bg-opacity-20 top-0 duration-200"
+              className="absolute w-full h-0 bg-blue-500/20 top-0 duration-200"
             ></div>
           </div>
         </button>
