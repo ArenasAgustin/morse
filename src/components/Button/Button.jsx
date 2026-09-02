@@ -2,9 +2,9 @@ export const Button = ({ onClick, children }) => {
   return (
     <button
       onClick={onClick}
-      className="transition-all after:transition-all bg-gray-500 border-gray-500 border-8 rounded-md py-2.5 px-5 text-xl z-10 after:absolute after:content-['⇄'] btn-hover m-3 relative overflow-hidden text-white line"
+      className="transition-all after:transition-all bg-gray-500 border-gray-500 border-8 rounded-md py-2.5 px-5 text-xl z-10 after:absolute after:content-['⇄'] btn-hover m-3 relative overflow-hidden text-white"
     >
-      <span className="reltive transition-all">{children}</span>
+      <span className="transition-all">{children}</span>
     </button>
   );
 };
