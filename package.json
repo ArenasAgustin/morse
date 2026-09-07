@@ -9,7 +9,7 @@
     "@heroicons/react": "2.2.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "sass": "1.103.1"
+    "sass": "1.104.0"
   },
   "scripts": {
     "predeploy": "pnpm run build",
