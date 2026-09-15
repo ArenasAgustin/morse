@@ -25,3 +25,6 @@ yarn-error.log*
 
 # local agent tooling (skill registry cache)
 /.atl
+
+# AI tooling local config
+.pi/
