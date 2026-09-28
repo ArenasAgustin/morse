@@ -1,0 +1,48 @@
+name: CodeQL
+
+# Advanced setup en lugar del default setup: el default setup no analiza los
+# PRs de Dependabot, y el ruleset de master exige resultados de CodeQL para
+# poder mergear. Este workflow corre en todos los PRs, incluidos los de Dependabot.
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+  schedule:
+    - cron: "41 16 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      # Necesario para subir los resultados; en PRs de Dependabot el token es
+      # de solo lectura salvo que se pida explícitamente.
+      security-events: write
+      contents: read
+      actions: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # Mismas categorías que usaba el default setup (/language:<lang>),
+        # así se conserva el historial de alertas.
+        language: [actions, javascript-typescript]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: none
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{ matrix.language }}"
