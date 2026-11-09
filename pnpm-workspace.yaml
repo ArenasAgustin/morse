@@ -1,2 +1,4 @@
+confirmModulesPurge: false
+
 allowBuilds:
   '@parcel/watcher': true
